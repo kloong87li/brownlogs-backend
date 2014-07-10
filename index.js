@@ -3,16 +3,14 @@
  * Module dependencies.
  */
 
+var koa = require('koa');
 var responseTime = require('koa-response-time');
-var ratelimit = require('koa-ratelimit');
 var compress = require('koa-compress');
 var logger = require('koa-logger');
 var router = require('koa-router');
 var load = require('./lib/load');
-var redis = require('redis');
-var koaBody = require('koa-body');
-var jsonFilter = require('koa-filter');
-var koa = require('koa');
+var jsonFilter = require('koa-json-filter');
+
 
 /**
  * Environment.
@@ -47,18 +45,8 @@ function api(opts) {
   // compression
   app.use(compress());
 
-  // rate limiting
-  app.use(ratelimit({
-    max: opts.ratelimit,
-    duration: opts.duration,
-    db: redis.createClient()
-  }));
-
-  // body parsing
-  app.use(koaBody());
-
   //json response formatting and filtering
-  app.use(filter());
+  app.use(jsonFilter());
 
   // routing
   app.use(router(app));
