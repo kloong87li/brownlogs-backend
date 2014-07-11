@@ -23,6 +23,6 @@ var app = api({
 });
 
 // listen
-
-app.listen(program.port, program.host, ~~program.backlog);
+var port = Number(process.env.PORT || 4000);
+app.listen(port, program.host, ~~program.backlog);
 console.log('Listening on %s:%s', program.host, program.port);
