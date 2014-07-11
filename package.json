@@ -1,7 +1,10 @@
 {
   "name": "brownlogs-backend",
   "version": "0.0.1",
-  "repository": "kloong87li/brownlogs-backend",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kloong87li/brownlogs-backend.git"
+  },
   "description": "Hacakthon app backend based off of koa-boilerplate-api",
   "dependencies": {
     "koa-response-time": "~1.0.2",
@@ -23,5 +26,8 @@
     "should": "*",
     "supertest": "~0.8.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": "0.11.x"
+  }
 }
