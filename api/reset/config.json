@@ -1,0 +1,7 @@
+{
+  "name": "reset",
+  "description": "RESET DB!!!",
+  "routes": {
+    "POST /reset": {"method": "reset"}
+  }
+}
