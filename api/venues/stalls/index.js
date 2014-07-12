@@ -43,7 +43,7 @@ exports.show = function *(){
 };
 
 
-var createRequired = ['name', 'floor', 'pictureUrl'];
+var createRequired = ['name', 'building', 'floor', 'pictureUrl'];
 
 
 /**
@@ -54,7 +54,7 @@ exports.create = function *(){
   var venueId = validate.toInt(this, this.params.venueId);
   validate.hasFieldsThrow(this, body, createRequired);
   var stall = yield Stalls.insert
-      (venueId, body.name, body.floor, body.pictureUrl);
+      (venueId, body.name, body.building, body.floor, body.pictureUrl);
   this.status = 201;
   this.body = stall;
 };

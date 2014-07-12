@@ -57,6 +57,9 @@ exports.create = function *(){
   var body = yield parse(this);
   var stallId = validate.toInt(this, this.params.stallId);
   validate.hasFieldsThrow(this, body, createRequired);
+  if (body.text == "") {
+    this.throw(400);
+  }
   var msg = yield Msgs.insert
       (stallId, body.text, body.image, body.author, body.msgRef);
   this.status = 201;
