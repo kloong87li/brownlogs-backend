@@ -16,12 +16,12 @@ exports.reset = function *() {
 
 	var Counters = db.get('Counters');
 
-	Counters.drop();
+	yield Counters.drop();
 
-	// yield Counters.insert({
-	// 	collection: 'Venues',
-	// 	seq: 0.
-	// });
+	yield Counters.insert({
+		collection: 'Venues',
+		seq: 0.
+	});
 
 	// yield Counters.insert({
 	// 	collection: 'Stalls',
