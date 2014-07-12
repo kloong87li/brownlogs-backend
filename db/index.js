@@ -1,5 +1,5 @@
 
-var db = require('monk')('localhost/brownlog');
+var db = require('monk')(process.env.MONGOHQ_URL || 'localhost/brownlog');
 var Counters = require('./Counters.js')(db);
 var Venues = require('./Venues.js')(db, Counters);
 var Stalls = require('./Stalls.js')(db, Counters);

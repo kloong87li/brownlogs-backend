@@ -1,5 +1,3 @@
-var db = require("../../db/");
-
 /**
  * This file illustrates how you may map
  * single routes using config.json instead
