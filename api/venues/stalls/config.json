@@ -9,6 +9,7 @@
       "subroutes": [
         "msgs"
       ]
-    }
+    },
+    "GET /stalls/:stallId/qr": {"method": "showQR"}
   }
 }

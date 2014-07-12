@@ -21,7 +21,8 @@
     "co-body": "0.0.1",
     "redis": "~0.10.3",
     "monk": "~0.9.0",
-    "validator": "^3.16.1"
+    "validator": "^3.16.1",
+    "qrcode-npm": "~0.0.3"
   },
   "devDependencies": {
     "mocha": "*",
