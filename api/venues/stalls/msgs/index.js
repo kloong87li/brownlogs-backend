@@ -1,5 +1,5 @@
 var parse = require('co-body');
-
+var Msgs = require('../../../../db').Msgs;
 
 var db = [
   {
@@ -31,7 +31,8 @@ var db = [
  * GET all msgs
  */
 exports.index = function *(){
-  var msgs = db;
+  var stallId = parseInt(this.params.stallId);
+  var msgs = yield Msgs.findByStallId(stallId);
   this.body = msgs;
 };
 
@@ -40,7 +41,8 @@ exports.index = function *(){
  * GET msg by :msgId
  */
 exports.show = function *(){
-  var msg = db[this.params.msgId];
+  var msgId = parseInt(this.params.msgId);
+  var msg = yield Msgs.findById(msgId);
   this.body = msg;
 };
 
@@ -50,18 +52,9 @@ exports.show = function *(){
  */
 exports.create = function *(){
   var body = yield parse(this);
-  var msg = {
-    text: body.text,
-    image: body.image,
-    author: body.author,
-    msg_ref: body.msg_ref,
-    id: db.length,
-    stall_id: this.params.stall_id,
-    upvotes: 0,
-    downvotes: 0,
-    date: new Date(),
-  }
-  db.append(msg);
+  var stallId = parseInt(this.params.stallId);
+  var msg = yield Msgs.insert
+      (stallId, body.text, body.image, body.author, body.msgRef);
   this.status = 201;
   this.body = msg;
 };

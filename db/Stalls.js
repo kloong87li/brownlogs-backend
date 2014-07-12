@@ -7,31 +7,32 @@ module.exports = function(database, counter) {
 
 	var module = {};
 
-	var newStall = function *(venueId, name, floor, rating, pictureUrl) {
+	var newStall = function *(venueId, name, floor, pictureUrl) {
 		var stall = {};
 		stall.id = yield counter.getStallId();
 		stall.venueId = venueId;
 		stall.name = name;
 		stall.floor = floor;
-		stall.rating = rating;
+		stall.rating = 0;
 		stall.pictureUrl = pictureUrl;
+		return stall;
 	}
 
 	module.list = function *() {
 		return yield Stalls.find();
 	}
 
-	module.insert = function *(venueId, name, floor, rating, pictureUrl) {
+	module.insert = function *(venueId, name, floor, pictureUrl) {
 		return yield Stalls.insert(
-			yield newStall(venueId, name, floor, rating, pictureUrl));
+			yield newStall(venueId, name, floor, pictureUrl));
 	}
 
 	module.findByVenueId = function *(venueId) {
-		return yield Stalls.find({venudId: venudId})
+		return yield Stalls.find({venueId: venueId})
 	}
 
 	module.findById = function *(id) {
-		return yield Stalls.findone({id: id});
+		return yield Stalls.findOne({id: id});
 	}
 
 	return module;

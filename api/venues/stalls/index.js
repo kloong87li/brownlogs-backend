@@ -1,5 +1,5 @@
 var parse = require('co-body');
-
+var Stalls = require('../../../db').Stalls;
 
 var db = [
   {
@@ -25,7 +25,8 @@ var db = [
  * GET all stalls
  */
 exports.index = function *(){
-  var stalls = db;
+  var venueId = parseInt(this.params.venueId);
+  var stalls = yield Stalls.findByVenueId(venueId);
   this.body = stalls;
 };
 
@@ -34,7 +35,8 @@ exports.index = function *(){
  * GET stall by :stallId.
  */
 exports.show = function *(){
-  var stall = db[this.params.stallId];
+  var id = parseInt(this.params.stallId);
+  var stall = yield Stalls.findById(id);
   this.body = stall;
 };
 
@@ -44,15 +46,9 @@ exports.show = function *(){
  */
 exports.create = function *(){
   var body = yield parse(this);
-  var stall = {
-    name: body.name,
-    floor: body.description,
-    picture_url: body.picture_url,
-    id: db.length,
-    venue_id: this.params.venue_id,
-    rating: 0
-  }
-  db.append(stall);
+  var venueId = parseInt(this.params.venueId);
+  var stall = yield Stalls.insert
+      (venueId, body.name, body.floor, body.pictureUrl);
   this.status = 201;
   this.body = stall;
 };
