@@ -16,6 +16,8 @@ exports.reset = function *() {
 
 	var Counters = db.get('Counters');
 
+	yield Counters.insert({BLAH: "BLAH"});
+
 	yield Counters.drop();
 
 	// yield Counters.insert({
