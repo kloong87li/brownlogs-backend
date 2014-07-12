@@ -10,9 +10,17 @@ exports.Stalls = Stalls;
 exports.Msgs = Msgs;
 
 exports.reset = function *() {
-	yield db.get('Venues').drop();
-	yield db.get('Stalls').drop();
-	yield db.get('Msgs').drop();
+	var Venues = db.get('Venues');
+	yield Venues.insert({});
+	yield Venues.drop();
+
+	var Stalls = db.get('Stalls');
+	yield Stalls.insert({});
+	yield Stalls.drop();
+
+	var Msgs = db.get('Msgs');
+	yield Msgs.insert({});
+	yield Msgs.drop();
 
 	var Counters = db.get('Counters');
 
