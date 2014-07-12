@@ -19,7 +19,8 @@
     "koa-body": "~0.2.0",
     "koa-json-filter": "~0.0.1",
     "co-body": "0.0.1",
-    "redis": "~0.10.3"
+    "redis": "~0.10.3",
+    "validator": "^3.16.1"
   },
   "devDependencies": {
     "mocha": "*",

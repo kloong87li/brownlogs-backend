@@ -1,4 +1,3 @@
-var db = require("../../db/");
 
 /**
  * This file illustrates how you may map

@@ -1,4 +1,5 @@
 var parse = require('co-body');
+var Venues = require('../../db').Venues;
 
 
 var db = [
@@ -19,7 +20,7 @@ var db = [
  * GET all venues
  */
 exports.index = function *(){
-  var venues = db;
+  var venues = yield Venues.list();
   this.body = venues;
 };
 
@@ -28,7 +29,8 @@ exports.index = function *(){
  * GET venue by :venueId.
  */
 exports.show = function *(){
-  var venue = db[this.params.venueId]
+  var id = parseInt(this.params.venueId);
+  var venue = yield Venues.findById(id);
   this.body = venue;
 };
 
@@ -38,12 +40,7 @@ exports.show = function *(){
  */
 exports.create = function *(){
   var body = yield parse(this);
-  var venue = {
-    name: body.name,
-    description: body.description,
-    id: db.length
-  }
-  db.append(venue);
+  var venue = yield Venues.insert(body.name, body.description);
   this.status = 201;
   this.body = venue;
 };
