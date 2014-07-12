@@ -1,0 +1,14 @@
+{
+  "name": "users",
+  "description": "user account resource",
+  "routes": {
+    "GET /users": {"method": "index"},
+    "POST /users": {"method": "create"},
+    "GET /users/:name": {
+      "method": "show",
+      "subroutes": [
+        "stats"
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "stalls",
+  "description": "where people poop. plop.",
+  "routes": {
+    "GET /stalls": {"method": "index"},
+    "POST /stalls": {"method": "create"},
+    "GET /stalls/:stallId": {
+      "method": "show",
+      "subroutes": [
+        "msgs"
+      ]
+    }
+  }
+}

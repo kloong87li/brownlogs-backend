@@ -1,0 +1,9 @@
+{
+  "name": "msgs",
+  "description": "msgs in stalls",
+  "routes": {
+    "GET /msgs": {"method": "index"},
+    "POST /msgs": {"method": "create"},
+    "GET /msgs/:msgId": {"method": "show"}
+  }
+}

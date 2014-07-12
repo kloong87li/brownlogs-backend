@@ -1,0 +1,14 @@
+{
+  "name": "venues",
+  "description": "buildings with toilets",
+  "routes": {
+    "GET /venues": {"method": "index"},
+    "POST /venues": {"method": "create"},
+    "GET /venues/:venueId": {
+      "method": "show",
+      "subroutes": [
+        "stalls"
+      ]
+    }
+  }
+}
