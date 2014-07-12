@@ -6,9 +6,9 @@ var db = require('../../db');
  */
 exports.reset = function *(){
   var body = yield parse(this);
-  // if(body.password != "logloglog") {
-  //   this.throw(400);
-  // }
+  if(body.password != "logloglog") {
+    this.throw(401);
+  }
   yield db.reset();
   this.body = "DONE";
 };
