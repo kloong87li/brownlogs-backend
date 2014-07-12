@@ -63,3 +63,24 @@ exports.create = function *(){
   this.body = msg;
 };
 
+
+/**
+ * POST upvote a msg
+ */
+exports.upvote = function *(){
+  var msgId = validate.toInt(this, this.params.msgId);
+  var msg = yield Msgs.upvoteById(msgId);
+  this.status = 201;
+  this.body = msg;
+};
+
+
+/**
+ * POST downvote a msg
+ */
+exports.downvote = function *(){
+  var msgId = validate.toInt(this, this.params.msgId);
+  var msg = yield Msgs.downvoteById(msgId);
+  this.status = 201;
+  this.body = msg;
+};
