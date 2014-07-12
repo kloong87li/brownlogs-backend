@@ -24,7 +24,7 @@ exports.index = function *(){
   this.set('Access-Control-Allow-Origin', "*");
   this.set('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   this.set('Access-Control-Allow-Headers', 'Content-Type');
-  this.body = venues;
+  this.body = {venues: venues};
 };
 
 
