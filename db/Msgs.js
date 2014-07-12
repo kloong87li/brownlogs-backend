@@ -27,15 +27,24 @@ module.exports = function(database, counter) {
 
 	module.insert = function *(stallId, text, image, author, msgRef) {
 		return yield Msgs.insert(
-			yield newMsg(stallId, text, image, author, msgRef))
+			yield newMsg(stallId, text, image, author, msgRef));
 	}
 
 	module.findByStallId = function *(stallId) {
-		return yield Msgs.find({stallId: stallId})
+		return yield Msgs.find({stallId: stallId});
 	}
 
 	module.findById = function *(id) {
 		return yield Msgs.findOne({id: id});
+	}
+
+	module.upvoteById = function *(id) {
+		console.log("incrementing", id);
+		return yield Msgs.update({id:id}, {$inc: {upvotes: 1}});
+	}
+
+	module.downvoteById = function *(id) {
+		return yield Msgs.update({id:id}, {$inc: {downvotes: 1}});
 	}
 
 	return module;

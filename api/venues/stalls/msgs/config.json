@@ -4,6 +4,8 @@
   "routes": {
     "GET /msgs": {"method": "index"},
     "POST /msgs": {"method": "create"},
-    "GET /msgs/:msgId": {"method": "show"}
+    "GET /msgs/:msgId": {"method": "show"},
+    "POST /msgs/:msgId/upvote": {"method": "upvote"},
+    "POST /msgs/:msgId/downvote": {"method": "downvote"}
   }
 }
