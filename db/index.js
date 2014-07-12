@@ -20,18 +20,18 @@ exports.reset = function *() {
 
 	yield Counters.drop();
 
-	// yield Counters.insert({
-	// 	collection: 'Venues',
-	// 	seq: 0.
-	// });
+	yield Counters.insert({
+		collection: 'Venues',
+		seq: 0.
+	});
 
-	// yield Counters.insert({
-	// 	collection: 'Stalls',
-	// 	seq: 0.
-	// });
+	yield Counters.insert({
+		collection: 'Stalls',
+		seq: 0.
+	});
 
-	// yield Counters.insert({
-	// 	collection: 'Msgs',
-	// 	seq: 0.
-	// });
+	yield Counters.insert({
+		collection: 'Msgs',
+		seq: 0.
+	});
 }
