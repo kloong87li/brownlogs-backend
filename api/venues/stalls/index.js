@@ -1,6 +1,7 @@
 var parse = require('co-body');
 var Stalls = require('../../../lib/db').Stalls;
 var validate = require('../../../lib/validate');
+var qrCode = require("qrcode-npm");
 
 var db = [
   {
@@ -44,6 +45,7 @@ exports.show = function *(){
 
 var createRequired = ['name', 'floor', 'pictureUrl'];
 
+
 /**
  * POST a new stall
  */
@@ -56,4 +58,24 @@ exports.create = function *(){
   this.status = 201;
   this.body = stall;
 };
+
+
+exports.showQR = function *() {
+  var id = validate.toInt(this, this.params.stallId);
+  var url = getUrl(id);
+  
+  var qr = qrCode.qrcode(4, 'M');
+  qr.addData(url);
+  qr.make();
+
+  var img = qr.createImgTag(4);
+  console.log(img);
+  this.body = img;
+};
+
+
+function getUrl(stallId) {
+  var root = "http://www.thebrownlog.com/#/stall/"
+  return root + stallId;
+}
 
