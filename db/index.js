@@ -10,15 +10,16 @@ exports.Stalls = Stalls;
 exports.Msgs = Msgs;
 
 exports.reset = function *() {
-	yield db.get('Venues').drop();
-	yield db.get('Stalls').drop();
-	yield db.get('Msgs').drop();
+	// yield db.get('Venues').drop();
+	// yield db.get('Stalls').drop();
+	// yield db.get('Msgs').drop();
+
+	yield db.get('Venues').remove({});
+	yield db.get('Stalls').remove({});
+	yield db.get('Msgs').remove({});
+	yield db.get('Counters').remove({});
 
 	var Counters = db.get('Counters');
-
-	yield Counters.insert({BLAH: "BLAH"});
-
-	yield Counters.drop();
 
 	yield Counters.insert({
 		collection: 'Venues',
