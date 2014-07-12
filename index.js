@@ -48,6 +48,13 @@ function api(opts) {
   //json response formatting and filtering
   app.use(jsonFilter());
 
+  app.use(function *(next) {
+    this.set('Access-Control-Allow-Origin', "*");
+    this.set('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    this.set('Access-Control-Allow-Headers', 'Content-Type');
+    yield* next;
+  })
+
   // routing
   app.use(router(app));
 

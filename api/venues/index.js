@@ -21,9 +21,6 @@ var db = [
  */
 exports.index = function *(){
   var venues = yield Venues.list();
-  this.set('Access-Control-Allow-Origin', "*");
-  this.set('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  this.set('Access-Control-Allow-Headers', 'Content-Type');
   this.body = {venues: venues};
 };
 
