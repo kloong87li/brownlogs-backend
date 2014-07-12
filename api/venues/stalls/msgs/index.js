@@ -1,6 +1,6 @@
 var parse = require('co-body');
-var Msgs = require('../../../../db').Msgs;
-var validate = require('../../../../validate');
+var Msgs = require('../../../../lib/db').Msgs;
+var validate = require('../../../../lib/validate');
 
 var db = [
   {
