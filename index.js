@@ -8,6 +8,7 @@ var responseTime = require('koa-response-time');
 var compress = require('koa-compress');
 var logger = require('koa-logger');
 var router = require('koa-router');
+var server = require('koa-static');
 var load = require('./lib/load');
 var jsonFilter = require('koa-json-filter');
 
@@ -57,6 +58,8 @@ function api(opts) {
 
   // routing
   app.use(router(app));
+
+  app.use(server('static/'));
 
   // boot
   load(app, __dirname + '/api');
