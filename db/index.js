@@ -13,6 +13,7 @@ exports.reset = function *() {
 	yield db.get('Venues').drop();
 	yield db.get('Stalls').drop();
 	yield db.get('Msgs').drop();
+	db.get('Counter');
 	yield db.get('Counters').drop();
 
 	var Counters = db.get('Counters');
