@@ -19,8 +19,8 @@ module.exports = function(database, counter) {
 		return yield Venues.find();
 	}
 
-	module.insert = function *() {
-		return yield Venues.insert(yield newVenue("v1", "d1"));
+	module.insert = function *(name, description) {
+		return yield Venues.insert(yield newVenue(name, description));
 	}
 
 	module.findById = function *(id) {

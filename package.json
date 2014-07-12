@@ -20,7 +20,8 @@
     "koa-json-filter": "~0.0.1",
     "co-body": "0.0.1",
     "redis": "~0.10.3",
-    "monk": "~0.9.0"
+    "monk": "~0.9.0",
+    "validator": "^3.16.1"
   },
   "devDependencies": {
     "mocha": "*",
