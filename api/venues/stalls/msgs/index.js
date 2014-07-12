@@ -48,7 +48,7 @@ exports.show = function *(){
 };
 
 
-var createRequired = ['text', 'author'];
+var createRequired = ['text'];
 
 /**
  * POST a new msg
