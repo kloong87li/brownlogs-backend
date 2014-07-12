@@ -1,6 +1,6 @@
 var parse = require('co-body');
-var Venues = require('../../db').Venues;
-var validate = require('../../validate');
+var Venues = require('../../lib/db').Venues;
+var validate = require('../../lib/validate');
 
 var db = [
   {

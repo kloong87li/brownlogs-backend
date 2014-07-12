@@ -1,5 +1,5 @@
 var parse = require('co-body');
-var db = require('../../db');
+var db = require('../../lib/db');
 
 /**
  * GET all venues
