@@ -1,3 +1,4 @@
+var db = require("../../db/");
 
 /**
  * This file illustrates how you may map
@@ -16,7 +17,10 @@ var stats = {
  */
 
 exports.all = function *(){
-  this.body = stats;
+	var venues = yield db.list();
+	// var n = yield db.insert();
+	this.body = venues;
+  // this.body = venues;
 };
 
 /**
@@ -24,5 +28,10 @@ exports.all = function *(){
  */
 
 exports.get = function *(){
-  this.body = stats[this.params.name];
+	var venue = yield db.find(6);
+  this.body = venue;
+};
+
+exports.insert = function *(){
+	this.body = yield db.insert();
 };
