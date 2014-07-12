@@ -34,7 +34,7 @@ var db = [
 exports.index = function *(){
   var stallId = validate.toInt(this, this.params.stallId);
   var msgs = yield Msgs.findByStallId(stallId);
-  this.body = msgs;
+  this.body = {msgs: msgs};
 };
 
 

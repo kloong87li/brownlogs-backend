@@ -29,7 +29,7 @@ var db = [
 exports.index = function *(){
   var venueId = validate.toInt(this, this.params.venueId);
   var stalls = yield Stalls.findByVenueId(venueId);
-  this.body = stalls;
+  this.body = {stalls: stalls};
 };
 
 
