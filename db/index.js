@@ -13,22 +13,22 @@ exports.reset = function *() {
 	yield db.get('Venues').drop();
 	yield db.get('Stalls').drop();
 	yield db.get('Msgs').drop();
-	yield db.get('Counters')
+	// yield db.get('Counters')
 
-	var Counters = db.get('Counters');
+	// var Counters = db.get('Counters');
 
-	yield Counters.insert({
-		collection: 'Venues',
-		seq: 0.
-	});
+	// yield Counters.insert({
+	// 	collection: 'Venues',
+	// 	seq: 0.
+	// });
 
-	yield Counters.insert({
-		collection: 'Stalls',
-		seq: 0.
-	});
+	// yield Counters.insert({
+	// 	collection: 'Stalls',
+	// 	seq: 0.
+	// });
 
-	yield Counters.insert({
-		collection: 'Msgs',
-		seq: 0.
-	});
+	// yield Counters.insert({
+	// 	collection: 'Msgs',
+	// 	seq: 0.
+	// });
 }
