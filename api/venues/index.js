@@ -1,6 +1,6 @@
 var parse = require('co-body');
 var Venues = require('../../db').Venues;
-
+var validate = require('../../validate');
 
 var db = [
   {
@@ -29,17 +29,23 @@ exports.index = function *(){
  * GET venue by :venueId.
  */
 exports.show = function *(){
-  var id = parseInt(this.params.venueId);
+  var id = validate.toInt(this, this.params.venueId);
   var venue = yield Venues.findById(id);
+  if(venue == null) {
+    this.throw(404);
+  }
   this.body = venue;
 };
 
+
+var createRequired = ['name', 'description'];
 
 /**
  * POST a new venue
  */
 exports.create = function *(){
   var body = yield parse(this);
+  validate.hasFieldsThrow(this, body, createRequired);
   var venue = yield Venues.insert(body.name, body.description);
   this.status = 201;
   this.body = venue;
